@@ -11,6 +11,7 @@ type thousandsNumber struct {
 	thousands hundredsNumber
 }
 
+// NewThousandsNumber initializes thousandsNumber and returns a thousandsNumber instance with the given number
 func NewThousandsNumber(num int) *thousandsNumber {
 	hundreds := NewHundredsNumber(GetLastDigits(num, 3))
 	thousands := NewHundredsNumber(GetLastDigits(num/1000, 3))
@@ -21,6 +22,7 @@ func NewThousandsNumber(num int) *thousandsNumber {
 	}
 }
 
+// ToWords returns the number in words if succeeds otherwise returns an error
 func (n *thousandsNumber) ToWords() (string, error) {
 	hundreds, err := n.hundreds.ToWords()
 	if err != nil {
